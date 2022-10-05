@@ -3,19 +3,14 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .grid-container {
   display:grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: auto;
   grid-gap: 1rem;
   padding: 10px;
-  width: 100vw;
+  width: 98.5vw;
+  margin: 0 auto;
 }
 
 .grid-item {
@@ -73,5 +68,3 @@
 .detailPage p + p,p + ul {
   margin-top: -10px;
 }
-
-
