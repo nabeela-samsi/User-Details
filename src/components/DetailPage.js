@@ -32,10 +32,11 @@ const DetailPage = (props) => {
                 <p>website: {userData.website}</p>
                 <p>address</p>
                 <ul>
-                    {// eslint-disable-next-line
-                    Object.entries(userData.address).map((data, index) => {
+                    {Object.entries(userData.address).map((data, index) => {
                         if(data[0] !== 'geo') {
                             return (<li key={`${data[0]}~${index}`}>{`${data[0]}: ${data[1]}`}</li>)
+                        } else {
+                            return null;
                         }
                     })}
                 </ul>
