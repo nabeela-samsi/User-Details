@@ -13,7 +13,7 @@ const UserCard = (props) => {
         <Link
           style={{ textDecoration: "none", color: "white" }}
           to={`/detail/${props.data.id}`}>
-          More
+          More Details
         </Link>
       </button>
     </div>
