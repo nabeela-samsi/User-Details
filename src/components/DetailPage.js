@@ -1,26 +1,16 @@
-import { useEffect, useState } from "react";
+import useFetch from "../hooks/useFetch";
 import { useNavigate, useParams } from "react-router-dom";
 
 const DetailPage = (props) => {
   const { id } = useParams();
-  const [userData, setUserData] = useState({});
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then(setLoading(true))
-      .then(async (data) => {
-        let responseData = await data.json();
-        if (responseData) {
-          setUserData(responseData);
-        }
-        setLoading(false);
-      });
-  }, [id]);
+  const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+  const { userData, loading, errorMessage } = useFetch(url);
 
   return loading ? (
     <p>Loading...</p>
+  ) : errorMessage.trim().length > 0 ? (
+    <p>{errorMessage}</p>
   ) : (
     <div className="detailPage">
       <div>

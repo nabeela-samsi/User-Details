@@ -6,7 +6,7 @@ const UserCard = (props) => {
       <p className="profileImage">{props.data.name.charAt(0)}</p>
       <p>{props.data.name}</p>
       <p className="username">{"@" + props.data.username}</p>
-      <Link to="#">{props.data.email}</Link>
+      <Link to="#">{props.data.website}</Link>
       <br />
       <br />
       <button className="moreDetails">

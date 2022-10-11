@@ -1,17 +1,15 @@
-import { useEffect, useState } from "react";
+import useFetch from "../hooks/useFetch";
 import UserCard from "./UserCard";
 
 const Home = () => {
-  const [userData, setUserData] = useState([]);
+  const url = "https://jsonplaceholder.typicode.com/users";
+  const { userData, loading, errorMessage } = useFetch(url);
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users").then(async (data) => {
-      let responseData = await data.json();
-      setUserData(responseData);
-    });
-  }, []);
-
-  return (
+  return loading ? (
+    <p>Loading...</p>
+  ) : errorMessage ? (
+    <p>{errorMessage}</p>
+  ) : (
     <div>
       <div className="grid-container">
         {userData.map((data) => (
